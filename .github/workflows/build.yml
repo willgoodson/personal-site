@@ -16,6 +16,6 @@ jobs:
       - run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add dist
+          git add dist -f
           git commit -m "Add dist folder from GitHub Actions build"
           git push

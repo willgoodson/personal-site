@@ -25,5 +25,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add dist -f
-          git commit -m ""
+          git commit -m "Updated Site Build"
           git push

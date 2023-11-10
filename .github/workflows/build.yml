@@ -2,6 +2,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'src/**'
+      - 'public/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,10 +20,10 @@ jobs:
         run: bun install
       - name: Build Repo
         run: bun run build
-      - name: add to repo
+      - name: Commit Build
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add dist -f
-          git commit -m "Add dist folder from GitHub Actions build"
+          git commit -m ""
           git push

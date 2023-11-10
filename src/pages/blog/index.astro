@@ -9,7 +9,6 @@ const allPosts = await Astro.glob('./*.mdx')
     {
         allPosts.map((post) => <PostCard frontmatter={post.frontmatter} url={post.url}/>)
     }
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia esse molestias voluptas optio, iure ut est enim consequuntur magnam dolore neque earum placeat quos corrupti corporis, quod ea tempore nihil?
 </MainLayout>
 
 <style>

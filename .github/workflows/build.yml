@@ -13,3 +13,9 @@ jobs:
       # run any `bun` or `bunx` command
       - run: bun install
       - run: bun run build
+      - run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add dist
+          git commit -m "Add dist folder from GitHub Actions build"
+          git push

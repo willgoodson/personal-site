@@ -7,15 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # ...
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
+      - name: Clone Repo
+        uses: actions/checkout@v3
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
 
       # run any `bun` or `bunx` command
-      - run: bun install
-      - run: bun run build
-      - run: |
+      - name: Setup Dependencies
+        run: bun install
+      - name: Build Repo
+        run: bun run build
+      - name: add to repo
+        run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add dist -f
           git commit -m "Add dist folder from GitHub Actions build"
           git push
+        env:
+          ACCESS_TOKEN: ${{secrets.access_token}}

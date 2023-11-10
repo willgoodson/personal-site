@@ -19,10 +19,8 @@ jobs:
         run: bun run build
       - name: add to repo
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add dist -f
           git commit -m "Add dist folder from GitHub Actions build"
           git push
-        env:
-          ACCESS_TOKEN: ${{secrets.access_token}}

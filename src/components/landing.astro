@@ -1,0 +1,105 @@
+---
+import TextCarousel from './text-carousel.svelte'
+---
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-header">WILLIAM GOODSON</h1>
+        <div class="splash-subheader">
+            <span id="static-words">ASPIRING&nbsp;</span>
+            <span style="color: {typed_color}" id="typed-words"></span>
+            <TextCarousel client:load/>
+            <span class="input-cursor"></span>
+        </div>
+        <ul class="splash-links">
+            <li class="splash-link">
+                <a href="https://github.com/willgoodson/"><img src="/images/icons/github.png" alt="Github" width="50px"></a>
+            </li>
+            <li class="splash-link">
+                <a href="https://www.linkedin.com/in/goodsonwill/"><img src="/images/icons/linkedin.png" alt="LinkedIn" width="50px"></a>
+            </li>
+            <li class="splash-link">
+                <a href="/blog"><img src="/images/icons/blog.png" alt="Blog" width="50px"></a>
+            </li>
+            <li class="splash-link">
+                <a href="mailto:contact@williamgoodson.com"><img src="/images/icons/email.png" alt="Resume" width="50px"></a>
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy William Goodson</p>
+    </footer>
+</div>
+
+
+<style>
+    .splash-container {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-items: center;
+    }
+
+    .splash-container footer {
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .splash {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50vw;
+        text-align: center;
+    }
+
+    .splash h1, div, ul {
+        width: 100%;
+    }
+
+    .splash ul {
+        list-style: none;
+    }
+
+    .splash h1 {
+        margin: 5px 0;
+        font-size: 48px;
+    }
+
+    .splash li {
+        margin: 10px 8px;
+        display: inline-block;
+    }
+
+    .splash-subheader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 18px;
+        background-color: black;
+        margin-left: 2px;
+        animation: blink .6s linear infinite alternate;
+    }
+
+    @keyframes blink {
+        0% {opacity: 1;}
+        40% {opacity: 1;}
+        60% {opacity: 0;}
+        100% {opacity: 0;}
+    }
+
+
+    /* Mobile Devices */
+    @media (max-device-width: 767px) {
+        .splash {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100vw;
+            text-align: center;
+        }
+    }
+</style>

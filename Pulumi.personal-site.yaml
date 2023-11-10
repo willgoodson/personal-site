@@ -1,0 +1,5 @@
+config:
+  aws:region: us-east-1
+  personal-website-astro:errorDocument: error.html
+  personal-website-astro:indexDocument: index.html
+  personal-website-astro:path: ./dist

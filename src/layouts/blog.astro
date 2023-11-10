@@ -1,0 +1,60 @@
+---
+import MainLayout from './main.astro'
+
+import {slugify, formatDate} from '../js/util'
+
+const { frontmatter } = Astro.props;
+
+const {title, description, date, tags, author, image} = frontmatter;
+---
+
+<MainLayout title={`WG | ${title}`} description={description}>
+    <header>
+        <div class="container">
+            <h1 class="h2">{title}</h1>
+            <p style="margin-bottom: 10px;">by <a style="color: black" href={`/author/${slugify(author)}`}>{author}</a> &bull; {formatDate(date)}</p>
+            <small>
+                {
+                    tags.map((tag:string) => <a href={`/category/${slugify(tag)}`} class="badge">{tag}</a>)
+                }
+            </small>
+        </div>
+        <img src={image.src} alt={image.alt}>
+    </header>
+    <div class="post-content">
+        <div class="content">
+            <slot />
+        </div>
+        <div class="sidebar"></div>
+    </div>
+</MainLayout>
+
+<style>
+    header {
+        display: grid;
+        place-items: center;
+        margin: 50px 0px;
+        & img {
+            margin-top: 25px;
+            /* box-shadow: 10px 10px 30px 1px #000000af; */
+            border-radius: 10px;
+            width: 1000px;
+            height: 500px;
+            object-fit: cover;
+        }
+    }
+
+    .container {
+        text-align: center;
+        width: 1000px;
+    }
+
+    .post-content {
+        display: grid;
+        place-items: center;
+    }
+
+    .content {
+        width: 1000px;
+    }
+</style>

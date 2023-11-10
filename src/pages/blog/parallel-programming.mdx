@@ -1,0 +1,27 @@
+---
+layout: "../../layouts/blog.astro"
+title: Demystifying Parallel Programming
+description: An article about the benefits of parallel programming
+date: 2023-11-08
+author: William Goodson
+image: {
+    src: "/images/parallel-programming/header.jpg",
+    alt: "a picture of a desk with a computer"
+}
+tags: ['Programming', 'Parallelization']
+---
+Most coding today follows a predictable path -- sequential programming. After all, it does make sense. Why would I need anything more for my cliche four-function calculator app? And to that, I say, "Fair enough". However, let's say you are working on something more ambitious such as a real-time chatting application with multiple users knocking at your server's door. How do you plan on handling how each user interacts with the server? You could queue up each interaction and process them sequentially, but imagine the agony of delaying those much-anticipated dad jokes from your buddy Chris. Fret not, as the solution may be just a few lines of code away with parallel programming.
+
+My plunge into the rabbit hole of parallel programming began while learning the Go programming language. One significant feature of Go is its built-in support for concurrency. This allows you to quickly and easily integrate concurrent code into your application to speed up your execution times. You might be thinking: "What is concurrency?" or "Why should I bother learning it?" So let's take a step back and I will provide a high-level explanation.
+
+An application is said to be concurrent when it can execute multiple tasks in an overlapping period. Typically you would have a scheduler that would assign processor time to each task. If the task does not finish in the provided time, it will be suspended to free up resources for another task and then re-queue it for later execution. In the Go programming language, these 'tasks' are referred to as GoRoutines, which are managed by the Go Scheduler. This method differs from parallelization which is associated with multiple-core systems, where you can run two sequential tasks at the same time by assigning them each a processor core. Concurrency and parallelization are often used together to get the most out of a system.
+
+To better understand this concept, let's illustrate it using a grocery store analogy. Imagine a grocery store with two checkout registers, each with a customer. These customers represent your tasks. Now, picture a single cashier, your processor core, who manages the transactions. The cashier efficiently handles one customer's groceries at a time. While the first customer pays, the cashier swiftly shifts attention to the second register, processing their items. Once done, the cashier smoothly alternates back to the first register, delivering the first customer's receipt. The cycle repeats until all the customers are served. This is similar to how concurrent tasks are handled. The processor is only able to handle one task at a time, but it will swap between tasks when it is waiting on other devices such as I/O to complete or when it's time slice runs out rather than remaining idle. 
+
+To extend the analogy with parallelization, you can imagine their being two cashiers -- two processor cores, who can handle customers simultaneously. This allows for more customers to be served at once, and if you were looking to incorporate both parallelization and concurrency, you could give both of the cashier's additional registers to manage. That way they can hop between them to serve more customers instead of remaining idle. This is very basic and high-level explanation, but hopefully you now understand how tasks are handled.
+
+Now that we have a basic understanding of concurrency and parallelization, let's discuss why you should learn to use them.
+#### Speed
+
+#### Efficiency
+#### Scalability

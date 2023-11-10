@@ -1,0 +1,44 @@
+---
+import MainLayout from '../layouts/main.astro'
+
+import { slugify, formatDate } from '../js/util';
+
+const { frontmatter, url } = Astro.props;
+
+const { title, date, author, image, description, tags} = frontmatter;
+
+---
+
+<article class="card">
+    <a href={url}>
+        <img src={image.src} alt={image.alt}>
+    </a>
+    <h2 >{title}</h2>
+    <p style="margin-bottom: 10px;">by <a style="color: black" href={`/author/${slugify(author)}`}>{author}</a> &bull; {formatDate(date)}</p>
+    <small>
+        {
+            tags.map((tag:string) => <a href={`/category/${slugify(tag)}`} class="badge">{tag}</a>)
+        }
+    </small>
+</article>
+
+<style>
+    .card {
+        width: 450px;
+        padding: 10px;
+        margin: 5px;
+        display: grid;
+        place-items: center;
+        /* box-shadow: 10px 10px 30px 1px #000000af; */
+        border-radius: 10px;
+
+        & img {
+            border-radius: 10px;
+            width: 400px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+    }
+
+</style>
